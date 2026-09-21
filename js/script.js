@@ -5,8 +5,8 @@
   The countdown has been removed because the birthday surprise is now live.
 */
 const CONFIG = {
-  recipientName: "[HER_NAME]",
-  senderName: "[YOUR_NAME]",
+  recipientName: "[Kiran]",
+  senderName: "[Kritagya]",
 
   birthdayMessage:
     "I hope this year brings you happiness, beautiful moments, new adventures, and countless reasons to smile.",
