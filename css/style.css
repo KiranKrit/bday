@@ -1,0 +1,208 @@
+:root {
+  --bg: #09070b;
+  --bg2: #120b12;
+  --text: #f9f2f3;
+  --muted: #c9b9c1;
+  --accent: #e7a8bb;
+  --accent2: #c9829c;
+  --line: rgba(255,255,255,.12);
+  --glass: rgba(255,255,255,.055);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); }
+body {
+  font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(170,76,113,.12), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(111,65,140,.11), transparent 30%),
+    var(--bg);
+}
+
+button { font: inherit; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+#app { position: relative; min-height: 100vh; }
+.screen {
+  min-height: 100vh;
+  display: none;
+  place-items: center;
+  padding: 36px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.screen.active { display: grid; animation: screenIn .8s ease both; }
+
+.content { width: min(920px, 100%); text-align: center; position: relative; z-index: 2; }
+.narrow { max-width: 760px; }
+
+.eyebrow {
+  letter-spacing: .28em;
+  font-size: .68rem;
+  color: var(--accent);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.hero-title, .giant-title, .proposal-title, .date-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+}
+.hero-title { font-size: clamp(3.2rem, 10vw, 7rem); line-height: .9; margin: 0 0 26px; }
+.giant-title { font-size: clamp(3.8rem, 12vw, 8rem); line-height: .82; margin: 0 0 14px; }
+.giant-title.small { font-size: clamp(3rem, 9vw, 6rem); }
+.name-title { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2rem, 6vw, 3.8rem); font-weight: 500; margin: 0 0 28px; color: #ead6dd; }
+.hero-copy, .section-copy, #photoMessage, .final-note {
+  color: var(--muted);
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  line-height: 1.85;
+  max-width: 650px;
+  margin: 0 auto 32px;
+}
+.hint { color: #a999a1; font-size: .9rem; }
+.hint span { color: var(--accent); }
+
+.countdown-wrap { margin: 42px 0 26px; }
+.countdown { display: flex; justify-content: center; align-items: center; gap: clamp(10px, 3vw, 28px); }
+.countdown div { min-width: 72px; }
+.countdown strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 500;
+  line-height: .8;
+}
+.countdown span { display: block; color: #9e8f97; font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; margin-top: 13px; }
+.countdown i { font-family: "Cormorant Garamond", Georgia, serif; font-style: normal; color: var(--accent); font-size: 2.6rem; margin-top: -15px; }
+
+.primary-btn, .secondary-btn, .text-btn, .date-options button {
+  border: 0;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.primary-btn {
+  background: linear-gradient(135deg, #d89aaf, #b76f8b);
+  color: #180b11;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 10px 35px rgba(199,113,143,.2);
+}
+.primary-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(199,113,143,.3); }
+.secondary-btn {
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 14px 22px;
+  border-radius: 999px;
+}
+.secondary-btn:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.text-btn { background: transparent; color: #a99ba2; padding: 12px; }
+.text-btn:hover { color: var(--text); }
+.icon-btn {
+  position: fixed; z-index: 30; top: 18px; right: 18px;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(10,7,11,.55);
+  color: var(--text); backdrop-filter: blur(12px); cursor: pointer;
+}
+
+.aurora { position: absolute; width: 45vw; height: 45vw; border-radius: 50%; filter: blur(90px); opacity: .2; }
+.aurora-one { background: #8e3f63; top: -20%; left: -15%; }
+.aurora-two { background: #533d91; bottom: -25%; right: -15%; }
+
+.birthday-burst {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(226,146,173,.16), transparent 25%),
+    radial-gradient(circle at 20% 70%, rgba(130,77,128,.12), transparent 25%);
+}
+.photo-content { max-width: 700px; }
+.photo-frame {
+  width: min(520px, 92vw);
+  height: min(66vh, 650px);
+  margin: 0 auto 28px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #120d12;
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-meta h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 500; margin: 0 0 12px;
+}
+.photo-meta p { max-width: 600px; margin-left: auto; margin-right: auto; }
+
+.story-lines p {
+  opacity: 0; transform: translateY(18px);
+  animation: lineIn .9s ease forwards;
+  color: #ded2d7;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  line-height: 1.25; margin: 0 0 24px;
+}
+.story-lines p:nth-child(1) { animation-delay: .2s; }
+.story-lines p:nth-child(2) { animation-delay: .8s; }
+.story-lines p:nth-child(3) { animation-delay: 1.4s; }
+.story-lines p:nth-child(4) { animation-delay: 2.1s; margin-bottom: 38px; }
+.love-title { color: #f1b7c9; text-shadow: 0 0 45px rgba(230,155,181,.25); }
+.proposal-heart, .soft-heart, .celebrate-icon { font-size: 3rem; color: var(--accent); margin-bottom: 16px; }
+.proposal-title { font-size: clamp(2.8rem, 8vw, 5.6rem); line-height: .95; margin: 0 auto 22px; }
+.proposal-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.date-title { font-size: clamp(2rem, 5vw, 3.2rem); margin: 20px 0 22px; }
+.date-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 520px; margin: 0 auto 20px; }
+.date-options button {
+  background: var(--glass); border: 1px solid var(--line); color: var(--text);
+  padding: 15px; border-radius: 16px;
+}
+.date-options button:hover, .date-options button.selected { background: rgba(226,155,181,.14); border-color: rgba(226,155,181,.45); transform: translateY(-2px); }
+.choice-message { color: var(--accent); min-height: 28px; }
+.signature { color: #c7b6bd; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.5rem; margin: 25px 0; }
+
+.hidden { display: none !important; }
+
+#particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.particle { position: absolute; width: 3px; height: 3px; background: rgba(255,220,230,.5); border-radius: 50%; animation: drift linear infinite; }
+
+.confetti { position: fixed; width: 8px; height: 14px; z-index: 50; top: -20px; animation: confettiFall 3.5s ease-in forwards; }
+
+@keyframes screenIn { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
+@keyframes lineIn { to { opacity: 1; transform: translateY(0); } }
+@keyframes drift { from { transform: translateY(110vh) translateX(0); opacity: 0; } 15% { opacity: .6; } to { transform: translateY(-10vh) translateX(50px); opacity: 0; } }
+@keyframes confettiFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+@media (max-width: 600px) {
+  .screen { padding: 28px 16px; }
+  .countdown { gap: 7px; }
+  .countdown div { min-width: 62px; }
+  .countdown i { font-size: 1.8rem; }
+  .proposal-actions { flex-direction: column; }
+  .proposal-actions > * { width: min(330px, 90vw); }
+  .date-options { grid-template-columns: 1fr; }
+  .photo-frame { height: 58vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+}
+
+
+/* "Do you like me?" interaction page */
+#likeQuestionScreen .proposal-title {
+  max-width: 760px;
+}
+#likeQuestionScreen .section-copy {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Dedicated eyes message page */
+#eyesScreen .eyes-line {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
