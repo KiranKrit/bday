@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09070b" />
+  <meta name="description" content="A little birthday surprise." />
+  <title>A Little Something For You ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="particles" aria-hidden="true"></div>
+  <button id="musicToggle" class="icon-btn" aria-label="Toggle music" title="Toggle music">🔇</button>
+
+  <main id="app">
+<section id="birthdayScreen" class="screen active">
+      <div class="birthday-burst" aria-hidden="true"></div>
+      <div class="content">
+        <p class="eyebrow">IT'S YOUR DAY</p>
+        <h2 class="giant-title">Happy Birthday</h2>
+        <h3 class="name-title" data-recipient>Her Name</h3>
+        <p class="section-copy" data-birthday-message>
+          I hope this year brings you happiness, beautiful moments, new adventures,
+          and countless reasons to smile.
+        </p>
+        <button class="primary-btn next-btn" data-next="photoScreen">There’s something else... <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="photoScreen" class="screen">
+      <div class="content photo-content">
+        <div class="photo-frame">
+          <img id="storyImage" src="" alt="Birthday memory" />
+        </div>
+        <div class="photo-meta">
+          <p class="eyebrow" id="photoCounter">MEMORY 01</p>
+          <h2 id="photoCaption">A beautiful moment.</h2>
+          <p id="photoMessage">Some people simply make a day better by being there.</p>
+        </div>
+        <button id="nextPhoto" class="primary-btn">Continue <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="storyScreen" class="screen">
+      <div class="content narrow">
+        <p class="eyebrow">ONE LITTLE CONFESSION</p>
+        <div class="story-lines">
+          <p>I could have stopped at wishing you Happy Birthday...</p>
+          <p>But somehow, that didn't feel like enough.</p>
+          <p>Somewhere along the way, you became someone I genuinely look forward to talking to.</p>
+          <p>And honestly...</p>
+        </div>
+        <button id="revealLike" class="primary-btn">One last thing... <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="revealScreen" class="screen">
+      <div class="content narrow">
+        <p class="eyebrow">HERE IT IS</p>
+        <h2 class="giant-title love-title">I LIKE YOU.</h2>
+        <p class="section-copy">And I've been wanting to ask you something.</p>
+        <button class="primary-btn" id="openProposal">One last question <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="proposalScreen" class="screen">
+      <div class="content narrow">
+        <div class="proposal-heart">♡</div>
+        <p class="eyebrow">NO PRESSURE. NO EXPECTATIONS.</p>
+        <h2 class="proposal-title">Would you like to go on a date with me?</h2>
+        <p class="section-copy">Just a chance for us to spend some time together, talk, laugh, and see where it goes.</p>
+        <div class="proposal-actions">
+          <button id="yesBtn" class="primary-btn">YES ❤️</button>
+          <button id="tryBtn" class="secondary-btn">LET'S GIVE IT A TRY 💕</button>
+          <button id="timeBtn" class="text-btn">I NEED SOME TIME 🤍</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="positiveScreen" class="screen">
+      <div class="content narrow">
+        <div class="celebrate-icon">✦</div>
+        <p class="eyebrow">OKAY... YOU JUST MADE MY DAY</p>
+        <h2 class="giant-title">❤️</h2>
+        <p class="section-copy">Now we have one very important decision.</p>
+        <h3 class="date-title">So... what should our first date be? 👀</h3>
+        <div class="date-options">
+          <button data-date="Coffee ☕">Coffee ☕</button>
+          <button data-date="Food 🍕">Food 🍕</button>
+          <button data-date="Evening Walk 🌆">Evening Walk 🌆</button>
+          <button data-date="Movie 🎬">Movie 🎬</button>
+        </div>
+        <p id="dateChoice" class="choice-message"></p>
+        <button id="finishPositive" class="primary-btn hidden">Continue <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="timeScreen" class="screen">
+      <div class="content narrow">
+        <div class="soft-heart">🤍</div>
+        <h2 class="giant-title small">That's completely okay.</h2>
+        <p class="section-copy">Take all the time you need. There is absolutely no pressure.</p>
+        <p class="section-copy">For now, just enjoy your birthday. 🎂</p>
+        <button class="primary-btn finish-btn">Happy Birthday <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="finalScreen" class="screen">
+      <div class="content narrow">
+        <p class="eyebrow">ONE LAST THING</p>
+        <h2 class="giant-title">Happy Birthday</h2>
+        <h3 class="name-title" data-recipient>Her Name</h3>
+        <p class="section-copy">I hope this little surprise made you smile.</p>
+        <p class="final-note">Whatever happens next, I'm glad I got to make this for you.</p>
+        <p class="signature">— <span data-sender>Your Name</span></p>
+        <button id="replayBtn" class="secondary-btn">Replay the Surprise ↻</button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="assets/music/background.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- EmailJS: used to notify the creator when a proposal response is selected. -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init({
+      publicKey: "RtxLeyV-mi3_mii6N"
+    });
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
