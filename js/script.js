@@ -101,7 +101,7 @@ let currentMusic = "first";
 // EmailJS configuration
 const EMAIL_CONFIG = {
   serviceId: "service_cmtlorb",
-  templateId: "utslwzc"
+  templateId: "template_n15616f"
 };
 
 let finalResponse = {
