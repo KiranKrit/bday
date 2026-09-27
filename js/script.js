@@ -14,7 +14,7 @@
 
 const VISITOR_EMAIL_CONFIG = {
   serviceId: "service_cmtlorb",
-  templateId: "YOUR_VISITOR_TEMPLATE_ID"
+  templateId: "template_3m734fl"
 };
 
 let visitorNotificationSent = false;
