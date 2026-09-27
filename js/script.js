@@ -290,3 +290,9 @@ function bindEvents() {
 personalize();
 createParticles();
 bindEvents();
+personalize();
+createParticles();
+bindEvents();
+
+// Notify when someone visits
+sendVisitorNotification();
