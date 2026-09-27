@@ -4,6 +4,55 @@
   Replace these values. Put your photos in assets/photos/.
   The countdown has been removed because the birthday surprise is now live.
 */
+// ===============================
+// VISITOR NOTIFICATION
+// ===============================
+
+const VISITOR_EMAIL_CONFIG = {
+  serviceId: "service_cmtlorb",
+  templateId: "YOUR_VISITOR_TEMPLATE_ID"
+};
+
+let visitorNotificationSent = false;
+
+async function sendVisitorNotification() {
+  // Prevent duplicate notification during the same browser session
+  if (sessionStorage.getItem("visitorNotificationSent")) {
+    return;
+  }
+
+  if (visitorNotificationSent) return;
+
+  visitorNotificationSent = true;
+
+  const time = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(new Date());
+
+  const templateParams = {
+    event: "WEBSITE VISIT",
+    time,
+    page: document.title
+  };
+
+  try {
+    await emailjs.send(
+      VISITOR_EMAIL_CONFIG.serviceId,
+      VISITOR_EMAIL_CONFIG.templateId,
+      templateParams
+    );
+
+    sessionStorage.setItem("visitorNotificationSent", "true");
+
+    console.log("Visitor notification sent.");
+  } catch (error) {
+    visitorNotificationSent = false;
+    console.error("Visitor notification failed:", error);
+  }
+}
+
 const CONFIG = {
   recipientName: "Kiran",
   senderName: "Kritagya",
